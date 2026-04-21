@@ -1,0 +1,59 @@
+version: 1
+document_set: frontend-master-plan
+folder: DOC/PROJECT PLAN/Frontend
+status: frontend-planning-locked
+summary: >-
+  Frontend master plan for the Interior Design Platform. Converts the shared
+  contracts into route planning, layout systems, navigation behavior, design
+  tokens, component governance, client-state boundaries, page acceptance
+  criteria, and unresolved backend dependency assumptions.
+controlling_inputs:
+  - DOC/MASTER PLAN/Plan.md
+  - DOC/PROJECT PLAN/ai-context.yaml
+  - DOC/PROJECT PLAN/Shared Contracts/ai-context.yaml
+  - DOC/PROJECT PLAN/Shared Contracts/product-requirements.md
+  - DOC/PROJECT PLAN/Shared Contracts/role-and-access-model.md
+  - DOC/PROJECT PLAN/Shared Contracts/route-and-surface-map.md
+  - DOC/PROJECT PLAN/Shared Contracts/domain-state-model.md
+  - DOC/PROJECT PLAN/Shared Contracts/integration-contract-index.md
+read_order:
+  - DOC/PROJECT PLAN/Frontend/README.md
+  - DOC/PROJECT PLAN/Frontend/frontend-architecture.md
+  - DOC/PROJECT PLAN/Frontend/design-system-and-component-registry.md
+  - DOC/PROJECT PLAN/Frontend/state-and-client-data-flow.md
+  - DOC/PROJECT PLAN/Frontend/interaction-and-motion.md
+  - DOC/PROJECT PLAN/Frontend/assumptions-ledger.md
+  - DOC/PROJECT PLAN/Frontend/Pages/public-home.md
+  - DOC/PROJECT PLAN/Frontend/Pages/public-discovery.md
+  - DOC/PROJECT PLAN/Frontend/Pages/public-detail-pages.md
+  - DOC/PROJECT PLAN/Frontend/Pages/public-content-commerce-and-utility.md
+  - DOC/PROJECT PLAN/Frontend/Pages/auth-and-account-entry.md
+  - DOC/PROJECT PLAN/Frontend/Pages/client-surface.md
+  - DOC/PROJECT PLAN/Frontend/Pages/designer-surface.md
+  - DOC/PROJECT PLAN/Frontend/Pages/admin-surface.md
+frontend_invariants:
+  - Shared Contracts own routes, roles, lifecycle states, and integration truth.
+  - Mobile must feel app-like and touch-first; it is not a scaled-down desktop layout.
+  - Desktop navigation is text-forward; mobile may become icon-assisted where recognition speed matters.
+  - Icons on mobile must keep text labels for primary navigation and high-risk actions.
+  - Public routes must not repeat identical hero, proof, and CTA structure across pages.
+  - Every route family must define loading, empty, error, recovery, and permission behavior where relevant.
+  - Design values belong in the token system and component registry, not route-level improvisation.
+route_families:
+  - public-discovery
+  - public-detail
+  - public-content-commerce
+  - auth-entry
+  - client-app
+  - designer-app
+  - admin-governance
+backend_dependency_hotspots:
+  - auth and verification gating
+  - search and filter data quality
+  - inquiry, booking, and messaging state transitions
+  - review eligibility and moderation gates
+  - commerce model and checkout behavior
+  - AI assistant grounding and escalation rules
+next_consumer:
+  - DOC/Universal/Prompts_Execution/06a_frontend_only_execution_prompt.md
+  - DOC/Universal/Prompts_planning/03_backend_system_master_plan_prompt.md
