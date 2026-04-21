@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4efe8;
+  --surface: #fbf8f4;
+  --inset: #ece4da;
+  --foreground: #1e1a17;
+  --muted: #6b6259;
+  --border: #d8cec3;
+  --brand-primary: #2f5a4f;
+  --brand-secondary: #8a6a4a;
+  --brand-accent: #b85c3b;
+  --success: #2d6b57;
+  --warning: #9c6a18;
+  --danger: #a54436;
+  --info: #355c7d;
+  --shadow-rest: 0 24px 48px rgba(35, 29, 24, 0.08);
+  --shadow-raise: 0 28px 60px rgba(35, 29, 24, 0.12);
+  --shadow-overlay: 0 32px 90px rgba(24, 20, 16, 0.2);
+  /* Semantic gradients for backgrounds */
+  --gradient-hero: linear-gradient(135deg, rgba(255,255,255,0.90), rgba(236,228,218,0.88));
+  --gradient-brand-tint: linear-gradient(135deg, rgba(47,90,79,0.12), rgba(184,92,59,0.12));
+  --gradient-surface-tint: linear-gradient(180deg, rgba(255,255,255,0.28), transparent 28%);
+  --gradient-brand-radial: radial-gradient(circle at top left, rgba(184,92,59,0.12), transparent 30%);
+  /* Auth panel — always a dark brand gradient, not mode-switched */
+  --gradient-auth-panel: linear-gradient(135deg, rgba(47,90,79,0.92), rgba(138,106,74,0.88));
+  /* Frosted overlay on brand-colored panels */
+  --overlay-brand-glass: oklch(1 0 0 / 0.10);
+  --overlay-brand-glass-md: oklch(1 0 0 / 0.15);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-inset: var(--inset);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #181311;
+    --surface: #231d19;
+    --inset: #302722;
+    --foreground: #f7f1ea;
+    --muted: #cabfb3;
+    --border: #4a3d35;
+    --shadow-rest: 0 24px 48px rgba(0, 0, 0, 0.28);
+    --shadow-raise: 0 28px 60px rgba(0, 0, 0, 0.36);
+    --shadow-overlay: 0 32px 90px rgba(0, 0, 0, 0.55);
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, rgba(35,29,24,0.96), rgba(47,90,79,0.18));
+    --gradient-brand-tint: linear-gradient(135deg, rgba(47,90,79,0.18), rgba(184,92,59,0.18));
+    --gradient-surface-tint: linear-gradient(180deg, rgba(35,29,24,0.18), transparent 28%);
+    --gradient-brand-radial: radial-gradient(circle at top left, rgba(47,90,79,0.18), transparent 30%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  background-image:
+    var(--gradient-brand-radial),
+    var(--gradient-surface-tint);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand-primary) 26%, var(--surface));
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 3px;
+}
+
+.surface-ring {
+  border: 1px solid color-mix(in srgb, var(--border) 88%, var(--surface));
+  box-shadow: var(--shadow-rest);
+}
+
+.texture-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--brand-primary) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--brand-primary) 5%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
